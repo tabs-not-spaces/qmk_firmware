@@ -1,11 +1,8 @@
 // Place your settings in this file to overwrite default and user settings.
 {
-    "terminal.integrated.defaultProfile.windows": "QMK",
     "terminal.integrated.env.windows": {
         "MSYSTEM": "MINGW64",
-        "CHERE_INVOKING": "1",
-        "KEYBOARD": "preonic/rev3",
-        "KEYMAP": "tabs-not-spaces"
+        "CHERE_INVOKING": "1"
     },
     "terminal.integrated.cursorStyle": "block",
     // Unofficially, QMK uses spaces for indentation

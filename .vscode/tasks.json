@@ -1,0 +1,121 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Setup",
+            "type":"shell",
+            "command": ["qmk setup ${env:KEYMAP}/qmk_firmware -y"],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Compile (Preonic | default)",
+            "type": "shell",
+            "command": ["qmk compile -kb ${KEYBOARD} -km default"],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "New Keymap (Preonic)",
+            "type": "shell",
+            "command": ["qmk new-keymap -kb ${KEYBOARD} -km ${KEYMAP}"],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Compile (Preonic | custom)",
+            "type": "shell",
+            "command": ["qmk compile -kb ${KEYBOARD} -km ${KEYMAP}"],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Flash (Preonic | custom)",
+            "type": "shell",
+            "command": ["qmk flash -kb ${KEYBOARD} -km ${KEYMAP}"],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Convert JSON to Keymap (Preonic)",
+            "type": "shell",
+            "command": ["qmk json2c ${input:InputFile} -o ./${KEYMAP}.c"],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": []
+        },
+    ],
+    "inputs": [
+        {
+            "description": "Please enter the path to the QMK Configurator JSON file.",
+          "id": "InputFile",
+          "type": "promptString",
+          "default": ""
+        }
+      ]
+}

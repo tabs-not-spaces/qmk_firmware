@@ -3,7 +3,7 @@
     "tasks": [
         {
             "label": "Setup",
-            "type":"shell",
+            "type": "shell",
             "command": ["qmk setup ${env:KEYMAP}/qmk_firmware -y"],
             "group": {
                 "kind": "build",
@@ -77,6 +77,78 @@
             "label": "Flash (Preonic | custom)",
             "type": "shell",
             "command": ["qmk flash -kb ${KEYBOARD} -km ${KEYMAP}"],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "New Keymap (Lumberjack)",
+            "type": "shell",
+            "command": ["qmk new-keymap -kb peej/lumberjack -km ${KEYMAP}"],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Flash (Lumberjack | custom)",
+            "type": "shell",
+            "command": ["qmk flash -kb peej/lumberjack -km ${KEYMAP}"],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Compile (Lumberjack | custom)",
+            "type": "shell",
+            "command": ["qmk compile -kb peej/lumberjack -km ${KEYMAP}"],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Lint (Lumberjack | custom)",
+            "type": "shell",
+            "command": ["qmk lint -kb peej/lumberjack -km ${KEYMAP}"],
             "group": {
                 "kind": "build",
                 "isDefault": true

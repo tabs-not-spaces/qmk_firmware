@@ -36,3 +36,5 @@
 
 #define LED1 C5
 #define LED2 C4
+
+void led_set_state(bool led1, bool led2);

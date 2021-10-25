@@ -15,6 +15,10 @@
  */
 
 #include "lumberjack.h"
+#include "enums.c"
+
+bool isFlashing = false;
+static uint16_t recording_timer;
 
 bool process_record_kb(uint16_t keycode, keyrecord_t *record) {
     writePin(LED1, record->event.pressed);
@@ -23,8 +27,41 @@ bool process_record_kb(uint16_t keycode, keyrecord_t *record) {
 }
 
 layer_state_t layer_state_set_kb(layer_state_t state) {
-    writePinLow(LED1);
-    writePin(LED2, state);
-
+    switch (get_highest_layer(state | default_layer_state)) {
+        case _QWERTY:
+            led_set_state(false, false);
+            break;
+        case _RAISE:
+            led_set_state(true, true);
+            break;
+        case _ADJUST:
+            recording_timer = timer_read();
+        default:
+            led_set_state(false, true);
+            break;
+    }
     return layer_state_set_user(state);
 }
+
+void led_set_state(bool led1, bool led2) {
+    led1 ? writePin(LED1, true) : writePinLow(LED1);
+    led2 ? writePin(LED2, true) : writePinLow(LED2);
+}
+
+void matrix_scan_user(void) {
+    if (IS_LAYER_ON(_ADJUST)) {
+            if (timer_elapsed(recording_timer) > 250) {
+                isFlashing = !isFlashing;
+                recording_timer = timer_read();
+            }
+            if (isFlashing) {
+                writePin(LED1, true);
+                writePin(LED2, true);
+            }
+            else {
+                writePinLow(LED1);
+                writePinLow(LED2);
+            }
+        }
+}
+

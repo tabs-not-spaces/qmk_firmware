@@ -28,22 +28,32 @@ enum preonic_keycodes {
     RAISE
 };
 
+enum {
+    EXIT,
+    ARCH
+};
+
+qk_tap_dance_action_t tap_dance_actions[] = {
+    [ARCH] = ACTION_TAP_DANCE_DOUBLE(KC_UP, LCTL(KC_E)),
+    [EXIT] = ACTION_TAP_DANCE_DOUBLE(KC_ESC, LALT(KC_F4))
+};
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /* Standard QWERTY */
 	[_QWERTY] = LAYOUT_ortho_5x12(
-        KC_GRV,     KC_1,   KC_2,       KC_3,       KC_4,       KC_5,   KC_6,   KC_7,       KC_8,    KC_9,    KC_0,    KC_BSPC, \
-        KC_TAB,     KC_Q,   KC_W,       KC_E,       KC_R,       KC_T,   KC_Y,   KC_U,       KC_I,    KC_O,    KC_P,    KC_DEL,  \
-        KC_ESC,     KC_A,   KC_S,       KC_D,       KC_F,       KC_G,   KC_H,   KC_J,       KC_K,    KC_L,    KC_SCLN, KC_QUOT, \
-        KC_LSFT,    KC_Z,   KC_X,       KC_C,       KC_V,       KC_B,   KC_N,   KC_M,       KC_COMM, KC_DOT,  KC_SLSH, KC_ENT,  \
-        KC_LCTL,    RGB_TOG, KC_LALT,   KC_LGUI,    MO(_LOWER), KC_SPC, KC_SPC, MO(_RAISE), KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
+        KC_GRV,     KC_1,   KC_2,       KC_3,       KC_4,       KC_5,   KC_6,   KC_7,       KC_8,    KC_9,     KC_0,    KC_BSPC, \
+        KC_TAB,     KC_Q,   KC_W,       KC_E,       KC_R,       KC_T,   KC_Y,   KC_U,       KC_I,    KC_O,     KC_P,    KC_DEL,  \
+        TD(EXIT),     KC_A,   KC_S,       KC_D,       KC_F,       KC_G,   KC_H,   KC_J,       KC_K,    KC_L,   KC_SCLN, KC_QUOT, \
+        KC_LSFT,    KC_Z,   KC_X,       KC_C,       KC_V,       KC_B,   KC_N,   KC_M,       KC_COMM, KC_DOT,   KC_SLSH, KC_ENT,  \
+        KC_LCTL,    RGB_TOG, KC_LALT,   KC_LGUI,    MO(_LOWER), KC_SPC, KC_SPC, MO(_RAISE), KC_LEFT, KC_DOWN,  TD(ARCH),   KC_RGHT
     ),
 
     /* LOWER */
 	[_LOWER] = LAYOUT_ortho_5x12(
         KC_TILD,      LCTL(KC_1), LCTL(KC_2), LCTL(KC_3), LCTL(KC_4), KC_PERC, KC_CIRC, KC_AMPR,       KC_ASTR,       KC_MINS,      KC_EQL,     KC_MINS, \
-        LSFT(KC_TAB), KC_EXLM,    KC_AT,      LCTL(KC_E), KC_DLR,     KC_PERC, KC_CIRC, KC_AMPR,       KC_ASTR,       KC_LPRN,      KC_RPRN,    KC_DEL,  \
+        LSFT(KC_TAB), KC_HOME,    KC_END,      LCTL(KC_E), KC_DLR,     KC_PERC, KC_CIRC, KC_AMPR,       KC_ASTR,      KC_LPRN,     KC_RPRN,    KC_DEL,  \
         KC_DEL,       LCTL(KC_A), LCTL(KC_S), KC_F3,      KC_F4,      KC_F5,   KC_F6,   KC_UNDS,       KC_PLUS,       KC_LCBR,      KC_RCBR,    KC_PIPE, \
-        _______,      LCTL(KC_Z), LCTL(KC_X), LCTL(KC_C), LCTL(KC_V), KC_F11,  KC_F12,  LSFT(KC_NUHS), LSFT(KC_NUBS), KC_HOME,      KC_END,     _______, \
+        _______,      LCTL(KC_Z), LCTL(KC_X), LCTL(KC_C), LCTL(KC_V), KC_F11,  KC_F12,  LSFT(KC_NUHS), LSFT(KC_NUBS), KC_HOME,      KC_BSLS,     _______, \
         _______,      RGB_MOD,    _______,    _______,    _______,    _______, _______, MO(_ADJUST),   KC_MNXT,       LCA(KC_DOWN), LCA(KC_UP), KC_MPLY
     ),
 
@@ -53,7 +63,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_GRV,   KC_1,     KC_2,    KC_3,    KC_4,        KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_DEL,  \
         KC_DEL,   _______,  _______, _______, _______,     _______, _______, KC_MINS, KC_EQL,  KC_LBRC, KC_RBRC, KC_BSLS, \
         _______,  _______,  _______, _______, _______,     _______, _______, KC_NUHS, KC_NUBS, KC_PGUP, KC_PGDN, _______, \
-        _______,  RGB_RMOD, _______, _______, MO(_ADJUST), _______, _______, _______, KC_MNXT, KC_VOLD, KC_VOLU, KC_MPLY
+        _______,  RGB_RMOD, _______, _______, MO(_ADJUST), _______, _______, _______, KC_MNXT, KC_VOLU, KC_VOLD, KC_MPLY
     ),
 
     /* LOWER + RAISE */
@@ -65,3 +75,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______,  _______, _______, _______, _______, _______, _______, _______, _______,  _______,  _______,  _______
     )
 };
+
+uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case TD(ARCH):
+            return 150;
+        default:
+            return TAPPING_TERM;
+    }
+}

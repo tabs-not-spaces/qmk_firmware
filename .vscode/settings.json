@@ -2,9 +2,12 @@
 {
     "terminal.integrated.env.windows": {
         "MSYSTEM": "MINGW64",
-        "CHERE_INVOKING": "1"
+        "CHERE_INVOKING": "1",
+        "KEYBOARD": "preonic/rev3",
+        "KEYMAP": "tabs-not-spaces"
     },
-    "terminal.integrated.cursorStyle": "block",
+    "terminal.integrated.defaultProfile.windows": "QMK",
+	"terminal.integrated.cursorStyle": "block",
     // Unofficially, QMK uses spaces for indentation
     "editor.insertSpaces": true,
     // Configure glob patterns for excluding files and folders.
@@ -27,5 +30,6 @@
     "[markdown]": {
         "editor.trimAutoWhitespace": false,
         "files.trimTrailingWhitespace": false
-    }
+    },
+    "editor.mouseWheelZoom": true
 }

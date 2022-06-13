@@ -56,8 +56,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /* Lower */
     [_LOWER] = LAYOUT_ortho_5x12(
         KC_TILD,      LCTL(KC_1), LCTL(KC_2),   LCTL(KC_3), LCTL(KC_4), KC_PERC, KC_CIRC, KC_AMPR,      KC_ASTR,    KC_MINS,        KC_EQL,     KC_MINS,
-        LSFT(KC_TAB), KC_HOME,    KC_END,       LCTL(KC_E), KC_DLR,     KC_PERC, KC_CIRC, KC_AMPR,      KC_ASTR,    KC_LPRN,        KC_RPRN,    KC_DEL,
-        KC_DEL,       LCTL(KC_A), LCTL(KC_S),   KC_F3,      KC_F4,      KC_F5,   KC_F6,   KC_UNDS,      KC_PLUS,    KC_LBRC,        KC_RBRC,   KC_PIPE,
+        LSFT(KC_TAB), KC_HOME,    KC_END,       LCTL(KC_E), KC_DLR,     KC_PERC, KC_CIRC, KC_AMPR,      KC_ASTR,    KC_LBRC,        KC_RBRC,    KC_DEL,
+        KC_DEL,       LCTL(KC_A), LCTL(KC_S),   KC_F3,      KC_F4,      KC_F5,   KC_F6,   KC_UNDS,      KC_PLUS,    KC_LCBR,        KC_RCBR,    KC_PIPE,
         _______,      LCTL(KC_Z), LCTL(KC_X),   LCTL(KC_C), LCTL(KC_V), KC_F11,  KC_F12,  _______,      _______,    KC_HOME,        KC_BSLS,    _______,
         _______,      _______,    _______,      _______,    _______,    _______, _______, MO(_ADJUST),  KC_MNXT,    LCA(KC_DOWN),   LCA(KC_UP), KC_MPLY
     ),

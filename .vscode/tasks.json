@@ -92,6 +92,60 @@
             "problemMatcher": []
         },
         {
+            "label": "New Keymap (TheKey)",
+            "type": "shell",
+            "command": ["qmk new-keymap -kb massdrop/thekey -km ${KEYMAP}"],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Compile (TheKey | custom)",
+            "type": "shell",
+            "command": ["qmk compile -kb massdrop/thekey -km ${KEYMAP}"],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Flash (TheKey | custom)",
+            "type": "shell",
+            "command": ["qmk flash -kb massdrop/thekey -km ${KEYMAP}"],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": []
+        },
+        {
             "label": "New Keymap (Lumberjack)",
             "type": "shell",
             "command": ["qmk new-keymap -kb peej/lumberjack -km ${KEYMAP}"],
@@ -164,7 +218,79 @@
             "problemMatcher": []
         },
         {
-            "label": "Convert JSON to Keymap (Preonic)",
+            "label": "New Keymap (Cornelius)",
+            "type": "shell",
+            "command": ["qmk new-keymap -kb foostan/cornelius -km ${KEYMAP}"],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Flash (Cornelius | custom)",
+            "type": "shell",
+            "command": ["qmk flash -kb foostan/cornelius -km ${KEYMAP}"],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Compile (Cornelius | custom)",
+            "type": "shell",
+            "command": ["qmk compile -kb foostan/cornelius -km ${KEYMAP}"],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Lint (Cornelius | custom)",
+            "type": "shell",
+            "command": ["qmk lint -kb foostan/cornelius -km ${KEYMAP}"],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Convert JSON to Keymap",
             "type": "shell",
             "command": ["qmk json2c ${input:InputFile} -o ./${KEYMAP}.c"],
             "group": {
